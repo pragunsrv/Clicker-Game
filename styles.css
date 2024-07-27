@@ -91,3 +91,27 @@ p {
     background-color: #f9f9f9;
     color: #000;
 }
+/* Add these styles to the existing styles.css */
+
+#leaderboard {
+    margin-top: 20px;
+}
+
+#leaderboard h2 {
+    font-size: 24px;
+}
+
+#leaderboardList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#leaderboardList li {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+#dailyReward {
+    color: green;
+    font-weight: bold;
+}

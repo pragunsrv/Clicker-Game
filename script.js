@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const clickMultiplierDisplay = document.getElementById('clickMultiplier');
     const totalClicksDisplay = document.getElementById('totalClicks');
     const highestScoreDisplay = document.getElementById('highestScore');
+    const currentLevelDisplay = document.getElementById('currentLevel');
+    const dailyRewardDisplay = document.getElementById('dailyReward');
+    const leaderboardList = document.getElementById('leaderboardList');
     const themeButtons = document.querySelectorAll('.themeButton');
 
     let score = parseInt(localStorage.getItem('score')) || 0;
@@ -34,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoClickerActive = localStorage.getItem('autoClickerActive') === 'true';
     let totalClicks = parseInt(localStorage.getItem('totalClicks')) || 0;
     let highestScore = parseInt(localStorage.getItem('highestScore')) || 0;
+    let currentLevel = parseInt(localStorage.getItem('currentLevel')) || 1;
+    let lastLogin = localStorage.getItem('lastLogin');
+    let dailyRewardCollected = localStorage.getItem('dailyRewardCollected') === 'true';
 
     function updateUI() {
         scoreDisplay.textContent = score;
@@ -49,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
         clickMultiplierDisplay.textContent = clickMultiplier;
         totalClicksDisplay.textContent = totalClicks;
         highestScoreDisplay.textContent = highestScore;
-        achievementMessage.textContent = getAchievement();
+        currentLevelDisplay.textContent = currentLevel;
+        dailyRewardDisplay.textContent = dailyRewardCollected ? 'Collected' : 'Not Collected';
+        updateLeaderboard();
         saveGameState();
     }
 
@@ -64,18 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('autoClickerActive', autoClickerActive);
         localStorage.setItem('totalClicks', totalClicks);
         localStorage.setItem('highestScore', highestScore);
+        localStorage.setItem('currentLevel', currentLevel);
+        localStorage.setItem('lastLogin', lastLogin);
+        localStorage.setItem('dailyRewardCollected', dailyRewardCollected);
     }
 
-    function getAchievement() {
-        if (score >= 10000) {
-            return 'Achievement Unlocked: 10000 Points!';
-        } else if (upgrades >= 25) {
-            return 'Achievement Unlocked: 25 Upgrades!';
-        } else if (autoClickerCount >= 10) {
-            return 'Achievement Unlocked: 10 Auto-Clickers!';
-        } else {
-            return '';
-        }
+    function updateLeaderboard() {
+        const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+        leaderboardList.innerHTML = '';
+        leaderboard.forEach(entry => {
+            const li = document.createElement('li');
+            li.textContent = `${entry.name}: ${entry.score}`;
+            leaderboardList.appendChild(li);
+        });
     }
 
     function activateAutoClicker() {
@@ -122,12 +131,31 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.className = theme;
     }
 
+    function levelUp() {
+        if (score >= currentLevel * 1000) {
+            score -= currentLevel * 1000;
+            currentLevel++;
+            updateUI();
+        }
+    }
+
+    function collectDailyReward() {
+        if (!dailyRewardCollected) {
+            dailyRewardCollected = true;
+            score += 500;
+            updateUI();
+        } else {
+            alert('Daily reward already collected!');
+        }
+    }
+
     clickButton.addEventListener('click', () => {
         score += clicksPerClick * clickMultiplier + scoreBonus;
         totalClicks++;
         if (score > highestScore) {
             highestScore = score;
         }
+        levelUp();
         updateUI();
     });
 
@@ -155,6 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
         clickMultiplier = 1;
         totalClicks = 0;
         highestScore = 0;
+        currentLevel = 1;
+        dailyRewardCollected = false;
         updateUI();
         alert('Game has been reset. You can start over with a fresh score.');
     });
@@ -181,5 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.getElementById('dailyReward').addEventListener('click', () => {
+        collectDailyReward();
+    });
+
+    // Initialize last login
+    lastLogin = new Date().toISOString();
     updateUI();
 });
