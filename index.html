@@ -3,70 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Game - Version 7</title>
+    <title>Clicker Game</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add some basic styling to ensure proper layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        #shop {
+            margin-top: 20px;
+        }
+        #leaderboard, #achievements {
+            margin-top: 20px;
+        }
+        #tutorial {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        #themeSelector {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Clicker Game</h1>
-        <button id="clickButton">Click Me!</button>
-        <p>Score: <span id="score">0</span></p>
-        <p>Clicks Per Click: <span id="clickValue">1</span></p>
-        <p>Upgrades: <span id="upgradeCount">0</span></p>
-        <button id="upgradeButton">Upgrade (Cost: <span id="upgradeCost">10</span>)</button>
+        <p>Score: <span id="scoreDisplay">0</span></p>
+        <p>Clicks per Click: <span id="clickValueDisplay">1</span></p>
+        <p>Upgrades: <span id="upgradeCountDisplay">0</span></p>
+        <p>Upgrade Cost: <span id="upgradeCostDisplay">10</span></p>
+        <button id="clickButton">Click!</button>
+        <button id="upgradeButton">Upgrade Clicks</button>
         <button id="resetButton">Reset Game</button>
-        <p id="achievementMessage"></p>
-        <div>
-            <button id="autoClickerButton">Buy Auto-Clicker (Cost: <span id="autoClickerCost">50</span>)</button>
-            <p>Auto-Clickers: <span id="autoClickerCount">0</span></p>
-            <p>Auto-Clicker Status: <span id="autoClickerStatus">Inactive</span></p>
-        </div>
-        <div>
-            <button id="buyBonusButton">Buy Score Bonus (Cost: <span id="bonusCost">100</span>)</button>
-            <p>Score Bonus: <span id="scoreBonus">0</span></p>
-        </div>
-        <div>
-            <button id="shopButton">Open Shop</button>
-            <div id="shop" style="display: none;">
-                <h2>Shop</h2>
-                <button id="buyMultiplier">Buy Click Multiplier (Cost: <span id="multiplierCost">200</span>)</button>
-                <p>Click Multiplier: <span id="clickMultiplier">1</span></p>
-                <button id="buySpecialItem">Buy Special Item (Cost: <span id="specialItemCost">500</span>)</button>
-                <p>Special Item Status: <span id="specialItemStatus">Not Bought</span></p>
-            </div>
+        <button id="autoClickerButton">Buy Auto-Clicker</button>
+        <button id="buyBonusButton">Buy Score Bonus</button>
+        <button id="shopButton">Shop</button>
+        <div id="shop" style="display: none;">
+            <button id="buyMultiplierButton">Buy Click Multiplier (200)</button>
+            <button id="buySpecialItemButton">Buy Special Item (500)</button>
         </div>
         <div id="gameStatistics">
-            <h2>Game Statistics</h2>
-            <p>Total Clicks: <span id="totalClicks">0</span></p>
-            <p>Highest Score: <span id="highestScore">0</span></p>
-            <p>Current Level: <span id="currentLevel">1</span></p>
-            <p>Daily Reward: <span id="dailyReward">Not Collected</span></p>
+            <p>Total Clicks: <span id="totalClicksDisplay">0</span></p>
+            <p>Highest Score: <span id="highestScoreDisplay">0</span></p>
+            <p>Current Level: <span id="currentLevelDisplay">1</span></p>
+            <p>Score Bonus: <span id="scoreBonusDisplay">0</span></p>
+            <p>Click Multiplier: <span id="clickMultiplierDisplay">1</span></p>
+            <p>Special Item Status: <span id="specialItemStatusDisplay">Not Bought</span></p>
+            <p>Multiplier Cost: <span id="multiplierCostDisplay">200</span></p>
+            <p>Special Item Cost: <span id="specialItemCostDisplay">500</span></p>
         </div>
         <div id="leaderboard">
             <h2>Leaderboard</h2>
-            <p>Sort by: 
-                <select id="sortBy">
-                    <option value="score">Score</option>
-                    <option value="clicks">Clicks</option>
-                </select>
-            </p>
+            <select id="sortBySelect">
+                <option value="score">Sort by Score</option>
+                <option value="clicks">Sort by Clicks</option>
+            </select>
             <ul id="leaderboardList"></ul>
         </div>
         <div id="achievements">
             <h2>Achievements</h2>
             <ul id="achievementList"></ul>
         </div>
-        <div id="themeSelector">
-            <h2>Choose Theme</h2>
-            <button class="themeButton" data-theme="default">Default</button>
-            <button class="themeButton" data-theme="dark">Dark</button>
-            <button class="themeButton" data-theme="light">Light</button>
-        </div>
         <div id="tutorial">
-            <h2>Interactive Tutorial</h2>
-            <p id="tutorialText">Welcome to the Clicker Game! Click the button to earn points. Use upgrades to increase your clicks per click. Check the shop for additional items!</p>
+            <p id="tutorialText">Welcome to Clicker Game! Click the button to earn score, buy upgrades, and try to reach the highest score!</p>
             <button id="closeTutorial">Close Tutorial</button>
         </div>
+        <div id="themeSelector">
+            <button class="themeButton" data-theme="light">Light Theme</button>
+            <button class="themeButton" data-theme="dark">Dark Theme</button>
+        </div>
+        <button id="dailyReward">Collect Daily Reward</button>
     </div>
     <script src="script.js"></script>
 </body>
