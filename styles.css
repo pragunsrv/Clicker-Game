@@ -1,117 +1,116 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    min-height: 100vh;
+    background-color: #f4f4f4;
 }
 
 .container {
-    text-align: center;
-    padding: 20px;
-    border: 2px solid #007bff;
-    border-radius: 10px;
     background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    font-size: 24px;
+    margin-top: 0;
 }
 
 button {
-    font-size: 24px;
+    margin: 10px 0;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s, transform 0.2s;
+    background-color: #007bff;
+    color: #fff;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-button:active {
-    transform: scale(0.98);
+button:disabled {
+    background-color: #d6d6d6;
+    cursor: not-allowed;
 }
 
-p {
-    font-size: 18px;
-    margin: 10px 0;
+p, ul {
+    font-size: 16px;
 }
 
-#upgradeDescriptions {
-    margin-top: 20px;
-}
-
-#upgradeDescriptions ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#upgradeDescriptions li {
-    margin: 5px 0;
+#achievementMessage {
+    color: #28a745;
+    font-weight: bold;
 }
 
 #shop {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#shop button {
+    background-color: #28a745;
+}
+
+#shop button:hover {
+    background-color: #218838;
+}
+
+#gameStatistics, #leaderboard, #achievements, #tutorial {
     margin-top: 20px;
 }
 
-#gameStatistics {
+#gameStatistics p, #leaderboard p, #achievements li {
+    font-size: 18px;
+}
+
+#leaderboard {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#leaderboard select {
+    padding: 5px;
+}
+
+#themeSelector {
     margin-top: 20px;
 }
 
 .themeButton {
-    font-size: 18px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+    margin-right: 10px;
+}
+
+#tutorial {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
 }
 
-.themeButton:hover {
-    background-color: #0056b3;
-}
-
-.default {
-    background-color: #fff;
-    color: #000;
-}
-
-.dark {
-    background-color: #333;
-    color: #fff;
-}
-
-.light {
-    background-color: #f9f9f9;
-    color: #000;
-}
-/* Add these styles to the existing styles.css */
-
-#leaderboard {
-    margin-top: 20px;
-}
-
-#leaderboard h2 {
-    font-size: 24px;
-}
-
-#leaderboardList {
-    list-style-type: none;
-    padding: 0;
-}
-
-#leaderboardList li {
+#tutorialText {
     font-size: 18px;
-    margin: 5px 0;
 }
 
-#dailyReward {
-    color: green;
-    font-weight: bold;
+#tutorial button {
+    background-color: #dc3545;
+}
+
+#tutorial button:hover {
+    background-color: #c82333;
 }

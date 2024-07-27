@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Game - Version 6</title>
+    <title>Clicker Game - Version 7</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,6 +31,8 @@
                 <h2>Shop</h2>
                 <button id="buyMultiplier">Buy Click Multiplier (Cost: <span id="multiplierCost">200</span>)</button>
                 <p>Click Multiplier: <span id="clickMultiplier">1</span></p>
+                <button id="buySpecialItem">Buy Special Item (Cost: <span id="specialItemCost">500</span>)</button>
+                <p>Special Item Status: <span id="specialItemStatus">Not Bought</span></p>
             </div>
         </div>
         <div id="gameStatistics">
@@ -42,7 +44,17 @@
         </div>
         <div id="leaderboard">
             <h2>Leaderboard</h2>
+            <p>Sort by: 
+                <select id="sortBy">
+                    <option value="score">Score</option>
+                    <option value="clicks">Clicks</option>
+                </select>
+            </p>
             <ul id="leaderboardList"></ul>
+        </div>
+        <div id="achievements">
+            <h2>Achievements</h2>
+            <ul id="achievementList"></ul>
         </div>
         <div id="themeSelector">
             <h2>Choose Theme</h2>
@@ -50,8 +62,12 @@
             <button class="themeButton" data-theme="dark">Dark</button>
             <button class="themeButton" data-theme="light">Light</button>
         </div>
+        <div id="tutorial">
+            <h2>Interactive Tutorial</h2>
+            <p id="tutorialText">Welcome to the Clicker Game! Click the button to earn points. Use upgrades to increase your clicks per click. Check the shop for additional items!</p>
+            <button id="closeTutorial">Close Tutorial</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-    
