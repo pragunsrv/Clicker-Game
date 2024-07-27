@@ -53,3 +53,41 @@ p {
 #upgradeDescriptions li {
     margin: 5px 0;
 }
+
+#shop {
+    margin-top: 20px;
+}
+
+#gameStatistics {
+    margin-top: 20px;
+}
+
+.themeButton {
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.themeButton:hover {
+    background-color: #0056b3;
+}
+
+.default {
+    background-color: #fff;
+    color: #000;
+}
+
+.dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.light {
+    background-color: #f9f9f9;
+    color: #000;
+}
