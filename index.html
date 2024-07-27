@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Game - Version 3</title>
+    <title>Clicker Game - Version 4</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +15,26 @@
         <p>Upgrades: <span id="upgradeCount">0</span></p>
         <button id="upgradeButton">Upgrade (Cost: <span id="upgradeCost">10</span>)</button>
         <button id="resetButton">Reset Game</button>
+        <p id="achievementMessage"></p>
+        <div>
+            <button id="autoClickerButton">Buy Auto-Clicker (Cost: <span id="autoClickerCost">50</span>)</button>
+            <p>Auto-Clickers: <span id="autoClickerCount">0</span></p>
+            <p>Auto-Clicker Status: <span id="autoClickerStatus">Inactive</span></p>
+        </div>
+        <div>
+            <button id="buyBonusButton">Buy Score Bonus (Cost: <span id="bonusCost">100</span>)</button>
+            <p>Score Bonus: <span id="scoreBonus">0</span></p>
+        </div>
+        <div id="upgradeDescriptions">
+            <p>Upgrade Description:</p>
+            <ul>
+                <li>Upgrade: Increases clicks per click by 1.</li>
+                <li>Auto-Clicker: Generates clicks automatically over time.</li>
+                <li>Score Bonus: Gives a one-time score boost.</li>
+            </ul>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+    
