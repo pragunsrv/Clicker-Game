@@ -1,39 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const clickButton = document.getElementById('clickButton');
-    const upgradeButton = document.getElementById('upgradeButton');
-    const resetButton = document.getElementById('resetButton');
-    const autoClickerButton = document.getElementById('autoClickerButton');
-    const buyBonusButton = document.getElementById('buyBonusButton');
-    const shopButton = document.getElementById('shopButton');
-    const buyMultiplierButton = document.getElementById('buyMultiplierButton');
-    const buySpecialItemButton = document.getElementById('buySpecialItemButton');
-    const themeButtons = document.querySelectorAll('.themeButton');
-    const dailyRewardButton = document.getElementById('dailyReward');
-    const sortBySelect = document.getElementById('sortBySelect');
-    const leaderboardList = document.getElementById('leaderboardList');
-    const achievementList = document.getElementById('achievementList');
-    const tutorial = document.getElementById('tutorial');
-    const closeTutorialButton = document.getElementById('closeTutorial');
-    const scoreDisplay = document.getElementById('scoreDisplay');
-    const clickValueDisplay = document.getElementById('clickValueDisplay');
-    const upgradeCountDisplay = document.getElementById('upgradeCountDisplay');
-    const upgradeCostDisplay = document.getElementById('upgradeCostDisplay');
-    const autoClickerCostDisplay = document.getElementById('autoClickerCostDisplay');
-    const autoClickerCountDisplay = document.getElementById('autoClickerCountDisplay');
-    const autoClickerStatusDisplay = document.getElementById('autoClickerStatusDisplay');
-    const scoreBonusDisplay = document.getElementById('scoreBonusDisplay');
-    const clickMultiplierDisplay = document.getElementById('clickMultiplierDisplay');
-    const specialItemCostDisplay = document.getElementById('specialItemCostDisplay');
-    const specialItemStatusDisplay = document.getElementById('specialItemStatusDisplay');
-    const totalClicksDisplay = document.getElementById('totalClicksDisplay');
-    const highestScoreDisplay = document.getElementById('highestScoreDisplay');
-    const currentLevelDisplay = document.getElementById('currentLevelDisplay');
-    const dailyRewardDisplay = document.getElementById('dailyReward');
+    const elements = {
+        clickButton: document.getElementById('clickButton'),
+        upgradeButton: document.getElementById('upgradeButton'),
+        resetButton: document.getElementById('resetButton'),
+        autoClickerButton: document.getElementById('autoClickerButton'),
+        buyBonusButton: document.getElementById('buyBonusButton'),
+        shopButton: document.getElementById('shopButton'),
+        buyMultiplierButton: document.getElementById('buyMultiplierButton'),
+        buySpecialItemButton: document.getElementById('buySpecialItemButton'),
+        themeButtons: document.querySelectorAll('.themeButton'),
+        dailyRewardButton: document.getElementById('dailyReward'),
+        sortBySelect: document.getElementById('sortBySelect'),
+        leaderboardList: document.getElementById('leaderboardList'),
+        achievementList: document.getElementById('achievementList'),
+        tutorial: document.getElementById('tutorial'),
+        closeTutorialButton: document.getElementById('closeTutorial'),
+        scoreDisplay: document.getElementById('scoreDisplay'),
+        clickValueDisplay: document.getElementById('clickValueDisplay'),
+        upgradeCountDisplay: document.getElementById('upgradeCountDisplay'),
+        upgradeCostDisplay: document.getElementById('upgradeCostDisplay'),
+        autoClickerCountDisplay: document.getElementById('autoClickerCountDisplay'),
+        autoClickerStatusDisplay: document.getElementById('autoClickerStatusDisplay'),
+        scoreBonusDisplay: document.getElementById('scoreBonusDisplay'),
+        clickMultiplierDisplay: document.getElementById('clickMultiplierDisplay'),
+        specialItemStatusDisplay: document.getElementById('specialItemStatusDisplay'),
+        totalClicksDisplay: document.getElementById('totalClicksDisplay'),
+        highestScoreDisplay: document.getElementById('highestScoreDisplay'),
+        currentLevelDisplay: document.getElementById('currentLevelDisplay'),
+        dailyRewardDisplay: document.getElementById('dailyRewardDisplay')
+    };
 
-    if (!scoreDisplay || !clickValueDisplay || !upgradeCountDisplay || !upgradeCostDisplay ||
-        !autoClickerCountDisplay || !autoClickerStatusDisplay || !scoreBonusDisplay ||
-        !clickMultiplierDisplay || !specialItemStatusDisplay || !totalClicksDisplay ||
-        !highestScoreDisplay || !currentLevelDisplay || !dailyRewardDisplay) {
+    // Log each element to check if they are null
+    for (const [key, element] of Object.entries(elements)) {
+        if (!element) {
+            console.error(`Element with ID ${key} is missing in the HTML.`);
+        } else {
+            console.log(`Element with ID ${key} is present.`);
+        }
+    }
+
+    if (!elements.scoreDisplay || !elements.clickValueDisplay || !elements.upgradeCountDisplay || !elements.upgradeCostDisplay ||
+        !elements.autoClickerCountDisplay || !elements.autoClickerStatusDisplay || !elements.scoreBonusDisplay ||
+        !elements.clickMultiplierDisplay || !elements.specialItemStatusDisplay || !elements.totalClicksDisplay ||
+        !elements.highestScoreDisplay || !elements.currentLevelDisplay || !elements.dailyRewardDisplay) {
         console.error('One or more elements are missing in the HTML.');
         return;
     }
@@ -59,19 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function updateDisplay() {
-        if (scoreDisplay) scoreDisplay.textContent = score;
-        if (clickValueDisplay) clickValueDisplay.textContent = clicksPerClick;
-        if (upgradeCountDisplay) upgradeCountDisplay.textContent = upgrades;
-        if (upgradeCostDisplay) upgradeCostDisplay.textContent = upgradeCost;
-        if (autoClickerCountDisplay) autoClickerCountDisplay.textContent = autoClickerCount;
-        if (autoClickerStatusDisplay) autoClickerStatusDisplay.textContent = autoClickerActive ? 'Active' : 'Inactive';
-        if (scoreBonusDisplay) scoreBonusDisplay.textContent = scoreBonus;
-        if (clickMultiplierDisplay) clickMultiplierDisplay.textContent = clickMultiplier;
-        if (specialItemStatusDisplay) specialItemStatusDisplay.textContent = specialItemBought ? 'Bought' : 'Not Bought';
-        if (totalClicksDisplay) totalClicksDisplay.textContent = totalClicks;
-        if (highestScoreDisplay) highestScoreDisplay.textContent = highestScore;
-        if (currentLevelDisplay) currentLevelDisplay.textContent = currentLevel;
-        if (dailyRewardDisplay) dailyRewardDisplay.textContent = dailyRewardCollected ? 'Reward Collected' : 'Reward Available';
+        if (elements.scoreDisplay) elements.scoreDisplay.textContent = score;
+        if (elements.clickValueDisplay) elements.clickValueDisplay.textContent = clicksPerClick;
+        if (elements.upgradeCountDisplay) elements.upgradeCountDisplay.textContent = upgrades;
+        if (elements.upgradeCostDisplay) elements.upgradeCostDisplay.textContent = upgradeCost;
+        if (elements.autoClickerCountDisplay) elements.autoClickerCountDisplay.textContent = autoClickerCount;
+        if (elements.autoClickerStatusDisplay) elements.autoClickerStatusDisplay.textContent = autoClickerActive ? 'Active' : 'Inactive';
+        if (elements.scoreBonusDisplay) elements.scoreBonusDisplay.textContent = scoreBonus;
+        if (elements.clickMultiplierDisplay) elements.clickMultiplierDisplay.textContent = clickMultiplier;
+        if (elements.specialItemStatusDisplay) elements.specialItemStatusDisplay.textContent = specialItemBought ? 'Bought' : 'Not Bought';
+        if (elements.totalClicksDisplay) elements.totalClicksDisplay.textContent = totalClicks;
+        if (elements.highestScoreDisplay) elements.highestScoreDisplay.textContent = highestScore;
+        if (elements.currentLevelDisplay) elements.currentLevelDisplay.textContent = currentLevel;
+        if (elements.dailyRewardDisplay) elements.dailyRewardDisplay.textContent = dailyRewardCollected ? 'Reward Collected' : 'Reward Available';
     }
 
     function checkAchievements() {
@@ -85,20 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateAchievements() {
-        if (achievementList) {
-            achievementList.innerHTML = '';
+        if (elements.achievementList) {
+            elements.achievementList.innerHTML = '';
             achievements.forEach(achievement => {
                 const li = document.createElement('li');
                 li.textContent = `Reach ${achievement.level} Points: ${achievement.message}`;
-                achievementList.appendChild(li);
+                elements.achievementList.appendChild(li);
             });
         }
     }
 
     function updateLeaderboard() {
         // Placeholder for leaderboard update logic
-        if (leaderboardList) {
-            leaderboardList.innerHTML = '<li>Leaderboard feature coming soon!</li>';
+        if (elements.leaderboardList) {
+            elements.leaderboardList.innerHTML = '<li>Leaderboard feature coming soon!</li>';
         }
     }
 
@@ -138,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    clickButton.addEventListener('click', () => {
+    elements.clickButton.addEventListener('click', () => {
         score += clicksPerClick * clickMultiplier;
         totalClicks++;
         if (score > highestScore) {
@@ -148,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDisplay();
     });
 
-    upgradeButton.addEventListener('click', () => {
+    elements.upgradeButton.addEventListener('click', () => {
         if (score >= upgradeCost) {
             score -= upgradeCost;
             clicksPerClick++;
@@ -158,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    resetButton.addEventListener('click', () => {
+    elements.resetButton.addEventListener('click', () => {
         score = 0;
         clicksPerClick = 1;
         upgrades = 0;
@@ -170,8 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDisplay();
     });
 
-    autoClickerButton.addEventListener('click', addAutoClicker);
-    buyBonusButton.addEventListener('click', () => {
+    elements.autoClickerButton.addEventListener('click', addAutoClicker);
+    elements.buyBonusButton.addEventListener('click', () => {
         if (score >= 200) {
             score -= 200;
             clickMultiplier += 0.5;
@@ -179,12 +188,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    shopButton.addEventListener('click', () => {
+    elements.shopButton.addEventListener('click', () => {
         const shop = document.getElementById('shop');
         shop.style.display = shop.style.display === 'none' ? 'block' : 'none';
     });
 
-    buyMultiplierButton.addEventListener('click', () => {
+    elements.buyMultiplierButton.addEventListener('click', () => {
         if (score >= 200) {
             score -= 200;
             clickMultiplier += 1;
@@ -192,24 +201,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    buySpecialItemButton.addEventListener('click', buySpecialItem);
+    elements.buySpecialItemButton.addEventListener('click', buySpecialItem);
 
-    themeButtons.forEach(button => {
+    elements.themeButtons.forEach(button => {
         button.addEventListener('click', () => {
             const theme = button.getAttribute('data-theme');
             applyTheme(theme);
         });
     });
 
-    dailyRewardButton.addEventListener('click', collectDailyReward);
+    elements.dailyRewardButton.addEventListener('click', collectDailyReward);
 
-    sortBySelect.addEventListener('change', () => {
+    elements.sortBySelect.addEventListener('change', () => {
         // Placeholder for sorting logic
         updateLeaderboard();
     });
 
-    closeTutorialButton.addEventListener('click', () => {
-        tutorial.style.display = 'none';
+    elements.closeTutorialButton.addEventListener('click', () => {
+        elements.tutorial.style.display = 'none';
     });
 
     updateDisplay();
